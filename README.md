@@ -2,12 +2,19 @@
 A simple project for offline training to learn Python from basic to advanced level.
 
 Existing problems and shortcomings that will be solved in this version:
+
   ✅ Unused or unnecessary functions have been removed from the app.js file
+  
   ✅ Show solution button added
+  
   ✅ The logic for adding libraries is described in the app.js file
+  
   ✅ The logic for placing all files from the shared folder into their directories
+  
   ✅ The main libraries for offline work have been downloaded (65 in total, with dependencies)
+  
   ✅ The following topics have been added for additional material
+  
     decorators
     the most common libraries, what, why, how to connect, links to familiarize yourself with each of these libraries
     (including Tkinter, Beautiful Soup, Collections, random, Pandas and NumPy)
@@ -26,19 +33,26 @@ Existing problems and shortcomings that will be solved in this version:
     The path of code from the programmer's head to production
     Variables, references and RAM
     recursion, what it is, examples, what to use
+    
   ✅ The following information materials have been added for additional material
+  
     examples of using decorators from simple to complex, up to 5 examples
     examples of using generators from simple to complex, up to 5 examples
     examples of using iterators from simple to complex, up to 5 examples
     examples of good naming (taken from additional material)
+    
   ✅ Sorted additional materials
+  
   ✅ Sorted information materials
+  
   — Expand the OOP topic: Classes and Objects:
     Class definition syntax
     Inheritance, Polymorphism, Encapsulation
+    
   — Add the following topics:
     Set: types set, frozensent
     Type NoneType
+    
   — Add sections for additional material, syntaxes with examples:
     Class definition syntax
     Class as a template for objects
@@ -47,7 +61,9 @@ Existing problems and shortcomings that will be solved in this version:
     Encapsulation
     Set: types set, frozensent
     Type NoneType
+    
   -X- "Sandbox", for a full-fledged test with all functions (input-output, file operations
+  
     — Make a sandbox in this form:
     — make an empty task "Sandbox" in a separate JSON (without a topic), or at the end of the existing tasks.json
     — when selecting this task in the task block, the following will be added:
