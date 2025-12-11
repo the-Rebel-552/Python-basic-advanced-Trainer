@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Trainer: Basics & Advanced</title>
+
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- CodeMirror (v5) -->
+  <link rel="stylesheet" href="css/codemirror.min.css">
+  
+  <!-- CodeMirror ТЕМИ (Вимога користувача) -->
+  <link rel="stylesheet" href="css/mnkai.min.css">
+  <link rel="stylesheet" href="css/darker.min.css">
+  <link rel="stylesheet" href="css/drakas.min.css">
+  <link rel="stylesheet" href="css/light-code.min.css">
+  
+  <script src="scripts/codemirror.min.js"></script>
+  <script src="scripts/python.min.js"></script>
+  <script src="scripts/matchbrackets.min.js"></script>
+  <script src="scripts/closebrackets.min.js"></script>
+
+  <!-- CodeMirror HINT ADDONS (Автодоповнення) -->
+  <script src="scripts/show-hint.min.js"></script>
+  <script src="scripts/anyword-hint.min.js"></script>
+  
+  <!-- jsPDF для генерації PDF -->
+  <script src="scripts/jspdf.umd.min.js"></script>
+  
+  <!-- Pyodide -->
+  <script src="scripts/pyodide.js"></script>
+  
+  <!-- Основні стилі підключаються локально -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/show-hint.min.css">
+</head>
+<body data-theme="mnkai">
+  <div id="topbar">
+    <div id="title">🐍 Python Trainer: Basics & Advanced</div>
+    <div id="controls">
+      <div id="Progress-status">Прогрес: 0/0 </div>
+      <div id="progress">0%</div>
+      <button id="pageThemeToggle" class="control-btn">Page Theme</button>
+      <button id="themeToggle" class="control-btn">Code Theme</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <h2 class="section-title">Уроки</h2>
+      <div id="lessonsList" class="lesson-list">
+        <!-- Список уроків та завдань буде тут -->
+      </div>
+    </div>
+
+    <div id="sidebar-resizer"></div>
+
+    <div class="main-content">
+      <div class="task-display" id="taskDisplay">
+        <h2 id="taskTitle" style="cursor: pointer;">Ласкаво просимо!</h2>
+        <div class="level-indicator">Рівень: <span id="taskLevel" class="level-easy">N/A</span></div>
+        <div id="taskText" class="task-text">
+            <p>Будь ласка, оберіть завдання зі списку ліворуч, щоб почати навчання.</p>
+            <p>Цей тренажер використовує Pyodide для виконання Python-коду прямо у вашому браузері.</p>
+        </div>
+        
+        <div id="hintBlock" class="hint-block hidden">
+            <div class="hint-title">💡 Підказка</div>
+            <p id="hintText"></p>
+        </div>
+        
+        <div id="successMessage" class="success-message hidden" onclick="onNextTask()">
+            <span id="successText"></span>
+        </div>
+      </div>
+
+      <!-- <div id="task-editor-resizer"></div> -->
+
+      <div class="editor-wrap">
+        <textarea id="plaintextEditor" style="display:none;"></textarea>
+        <div id="cmEditor"></div>
+      </div>
+
+      <div id="editor-wrap-console-resizer"></div>
+
+      <div class="editor-header">
+        <label>
+          Фільтр:
+          <select id="levelSelect" class="control-select">
+            <option value="all">Усі рівні</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </label>
+        <button id="runBtn" class="action-btn">Run</button>
+        <button id="checkBtn" class="action-btn">Check</button>
+        <button id="hintBtn" class="action-btn">Hint</button>
+        <button id="solutionBtn" class="action-btn">Solution</button>
+        <button id="resetBtn" class="action-btn">Reset</button>
+        <button id="nextBtn" class="action-btn">Next task</button>
+        <button id="certBtn" class="action-btn">Certificate (PDF)</button>
+        <button id="cribsBtn" class="action-btn">Info</button>
+        <div id="cribsModal" class="cribs-modal hidden">
+            <div class="cribs-resize-handle top-handle"></div>
+            <div class="cribs-resize-handle left-handle"></div>
+            <div class="cribs-content-container">
+                <button id="cribsCloseBtn" class="cribs-close-btn">✖</button>
+                <h2 class="cribs-header">📚 Python Допомога</h2>
+                <div id="cribsList" class="cribs-list">
+                    </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="bottom-row">
+        <div class="console-wrap">
+          <div class="console-header">Консоль <span id="pyodideStatus">(Pyodide: Loading...)</span></div>
+          <pre id="output" class="output"></pre>
+        </div>
+
+        <div class="buffers">
+          <div class="buffer">
+            <div class="buf-header">Буфер 1 <button class="copyBuf control-btn" data-id="buf1">Копіювати</button></div>
+            <textarea id="buf1" class="bufarea"></textarea>
+          </div>
+          <div class="buffer">
+            <div class="buf-header">Буфер 2 <button class="copyBuf control-btn" data-id="buf2">Копіювати</button></div>
+            <textarea id="buf2" class="bufarea"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <footer id="appFooter">
+        <div class="footer-content">
+          <p align="right">© 2025-2026 Python Trainer: Basics & Advanced. Всі права захищені. Розроблено: <strong>The-Rebel-552</strong>
+            <a href="#" id="licenseLink">Ліцензія</a>
+          </p>
+        </div>
+        <div id="licenseModal" class="modal-backdrop hidden">
+          <div class="modal-content">
+            <h4>⚖️ Ліцензійна угода</h4>
+            <div class="license-text">
+              <h4 align="center">Авторські права і ліва © 2025-2026</h4>
+              <h3 align="center">The-Rebel-552</h3>
+              <p><strong>Всі права захищені і не всі також.</strong></p>
+              
+              <h4>Умови використання:</h4>
+              <ul>
+                  <li>✅ Дозволено використовувати для особистого навчання</li>
+                  <li>❌ Заборонено комерційне використання без дозволу</li>
+                  <li>❌ Заборонено модифікація та розповсюдження коду</li>
+                  <li>❌ Заборонено видалення авторських приміток</li>
+              </ul>
+              
+              <h4>Захист інтелектуальної власності:</h4>
+              <p>Цей програмний продукт захищено всіма законами світу (в т.ч. законами фізики) 
+                та міжнародними угодами і незгодами. Несанкціоноване копіювання або розповсюдження 
+                може призвести або не призвести до цивільної або духовної, кримінальної відповідальності або безвідповідальності.</p>
+              <p align="right"><strong>Контакт:</strong> <a href="mailto:rebelthemachine@gmail.com">rebelthemachine@gmail.com</a></p>
+            </div>
+            <div class="modal-actions">
+              <button id="licenseCloseBtn" class="action-btn">Закрити</button>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- Модальне вікно для сертифікату -->
+  <div id="certificateModal" class="modal-backdrop hidden">
+    <div class="modal-content">
+      <h3>Отримати Сертифікат</h3>
+      <p>Курс: Python Basics</p>
+      <input type="text" id="userNameInput" placeholder="Введіть ваше ім'я та прізвище" required>
+      <div class="modal-actions">
+        <button id="modalGenerateBtn" class="action-btn">Створити PDF</button>
+        <button id="modalCloseBtn" class="control-btn">Скасувати</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Основний скрипт (app.js) -->
+  <script src="app.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!--
+    ╔═══════════════════════════════════════════════════════════╗
+    ║  Python Trainer: Basics & Advanced                        ║
+    ║  © 2025-2026 The-Rebel-552. Всі права захищені.           ║
+    ║  Ліцензовано під Apache License 2.0                       ║
+    ║  Несанкціоноване копіювання, модифікація                  ║
+    ║  або розповсюдження заборонено.                           ║
+    ║                                                           ║
+    ║  Контакт: rebelthemachine@gmail.com                       ║
+    ╚═══════════════════════════════════════════════════════════╝
+-->

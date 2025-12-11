@@ -1,0 +1,140 @@
+/* ===============================
+   INVERTED MONOKAI (REVERSE)
+   =============================== */
+
+.cm-s-light-code.CodeMirror {
+    background: #E8F0EA; /* E8F0EA / м'якший f2f2f2 / C5C6B5 */
+    color: #07070d;
+}
+
+.cm-s-light-code div.CodeMirror-selected {
+    background: #b6b7c1;
+}
+
+.cm-s-light-code.CodeMirror-line::selection,
+.cm-s-light-code.CodeMirror-line>span::selection,
+.cm-s-light-code.CodeMirror-line>span>span::selection {
+    background: rgba(182, 183, 193, .99);
+}
+
+.cm-s-light-code.CodeMirror-line::-moz-selection,
+.cm-s-light-code.CodeMirror-line>span::-moz-selection,
+.cm-s-light-code.CodeMirror-line>span>span::-moz-selection {
+    background: rgba(182, 183, 193, .99);
+}
+
+.cm-s-light-code .CodeMirror-gutters {
+    background: #C5C6B5;
+    border-right: 0;
+}
+
+.cm-s-light-code .CodeMirror-guttermarker {
+    color: #000;
+}
+
+.cm-s-light-code.CodeMirror-guttermarker-subtle {
+    color: #2f2f2f;
+}
+
+.cm-s-light-code.CodeMirror-linenumber {
+    color: #DADBCD;
+}
+
+.cm-s-light-code.CodeMirror-cursor {
+    border-left: 1px solid #07070f;
+}
+
+/* TOKENS */
+
+.cm-s-light-code span.cm-comment {
+    color: #656565; /* 717171 / м'якший #999 / #7a827a*/
+    font-style: italic;
+}
+
+.cm-s-light-code span.cm-atom {
+    color: #517e00;
+}
+
+.cm-s-light-code span.cm-number {
+    color: #517e00;
+}
+
+.cm-s-light-code span.cm-comment.cm-attribute {
+    color: #6848a8;
+}
+
+.cm-s-light-code span.cm-comment.cm-def {
+    color: #436d9d;
+}
+
+.cm-s-light-code span.cm-comment.cm-tag {
+    color: #006f56; /* 439d7c / #006f56 */
+}
+
+.cm-s-light-code span.cm-comment.cm-type {
+    color: #a66759;
+}
+
+.cm-s-light-code span.cm-attribute,
+.cm-s-light-code span.cm-property {
+    color: #591dd1;
+}
+
+.cm-s-light-code span.cm-keyword {
+    color: #880458; /* 880458 / інший f92672 / ff4081 */
+}
+
+.cm-s-light-code span.cm-builtin {
+    color: #E80000; /* 992610 / BD0C0C */
+}
+
+.cm-s-light-code span.cm-string {
+    color: #19248b;
+}
+
+.cm-s-light-code span.cm-variable {
+    color: #07070d;
+}
+
+.cm-s-light-code span.cm-variable-2 {
+    color: #601000;
+}
+
+.cm-s-light-code span.cm-type,
+.cm-s-light-code span.cm-variable-3 {
+    color: #992610;
+}
+
+.cm-s-light-code span.cm-def {
+    color: #0268e0;
+}
+
+.cm-s-light-code span.cm-bracket {
+    color: #07070d;
+}
+
+.cm-s-light-code span.cm-tag {
+    color: #06d98d;
+}
+
+.cm-s-light-code span.cm-header {
+    color: #197101; /* 517e00 / 197101 */
+}
+
+.cm-s-light-code span.cm-link {
+    color: #197101; /* 517e00 / 197101 */
+}
+
+.cm-s-light-code span.cm-error {
+    background: #06d98d;
+    color: #07070f;
+}
+
+.cm-s-light-code.CodeMirror-activeline-background {
+    background: #c8c7ce;
+}
+
+.cm-s-light-code.CodeMirror-matchingbracket {
+    text-decoration: underline;
+    color: #e8e8e2 !important; /* 000 / e8e8e2 */
+}

@@ -1,0 +1,134 @@
+.cm-s-mnkai.CodeMirror {
+    background: #272822;
+    color: #f8f8f2
+}
+
+.cm-s-mnkai div.CodeMirror-selected {
+    background: #49483e
+}
+
+.cm-s-mnkai .CodeMirror-line::selection,
+.cm-s-mnkai .CodeMirror-line>span::selection,
+.cm-s-mnkai .CodeMirror-line>span>span::selection {
+    background: rgba(73, 72, 62, .99)
+}
+
+.cm-s-mnkai .CodeMirror-line::-moz-selection,
+.cm-s-mnkai .CodeMirror-line>span::-moz-selection,
+.cm-s-mnkai .CodeMirror-line>span>span::-moz-selection {
+    background: rgba(73, 72, 62, .99)
+}
+
+.cm-s-mnkai .CodeMirror-gutters {
+    background: #272822;
+    border-right: 0
+}
+
+.cm-s-mnkai .CodeMirror-guttermarker {
+    color: #fff
+}
+
+.cm-s-mnkai .CodeMirror-guttermarker-subtle {
+    color: #d0d0d0
+}
+
+.cm-s-mnkai .CodeMirror-linenumber {
+    color: #d0d0d0
+}
+
+.cm-s-mnkai .CodeMirror-cursor {
+    border-left: 1px solid #f8f8f0
+}
+
+.cm-s-mnkai span.cm-comment {
+    color: #75715e;
+    font-style: italic;
+}
+
+.cm-s-mnkai span.cm-atom {
+    color: #ae81ff
+}
+
+.cm-s-mnkai span.cm-number {
+    color: #ae81ff
+}
+
+.cm-s-mnkai span.cm-comment.cm-attribute {
+    color: #97b757
+}
+
+.cm-s-mnkai span.cm-comment.cm-def {
+    color: #bc9262
+}
+
+.cm-s-mnkai span.cm-comment.cm-tag {
+    color: #bc6283
+}
+
+.cm-s-mnkai span.cm-comment.cm-type {
+    color: #5998a6
+}
+
+.cm-s-mnkai span.cm-attribute,
+.cm-s-mnkai span.cm-property {
+    color: #a6e22e
+}
+
+.cm-s-mnkai span.cm-keyword {
+    color: #f92672
+}
+
+.cm-s-mnkai span.cm-builtin {
+    color: #66d9ef
+}
+
+.cm-s-mnkai span.cm-string {
+    color: #e6db74
+}
+
+.cm-s-mnkai span.cm-variable {
+    color: #f8f8f2
+}
+
+.cm-s-mnkai span.cm-variable-2 {
+    color: #9effff
+}
+
+.cm-s-mnkai span.cm-type,
+.cm-s-mnkai span.cm-variable-3 {
+    color: #66d9ef
+}
+
+.cm-s-mnkai span.cm-def {
+    color: #fd971f
+}
+
+.cm-s-mnkai span.cm-bracket {
+    color: #f8f8f2
+}
+
+.cm-s-mnkai span.cm-tag {
+    color: #f92672
+}
+
+.cm-s-mnkai span.cm-header {
+    color: #ae81ff
+}
+
+.cm-s-mnkai span.cm-link {
+    color: #ae81ff
+}
+
+.cm-s-mnkai span.cm-error {
+    background: #f92672;
+    color: #f8f8f0
+}
+
+.cm-s-mnkai .CodeMirror-activeline-background {
+    background: #373831
+}
+
+.cm-s-mnkai .CodeMirror-matchingbracket {
+    text-decoration: underline;
+    color: #fff !important
+}
