@@ -1,3 +1,15 @@
+/*
+    ╔═══════════════════════════════════════════════════════════╗
+    ║  Python Trainer: Basics & Advanced                        ║
+    ║  © 2025-2026 The-Rebel-552. Всі права захищені.           ║
+    ║  Ліцензовано під Apache License 2.0                       ║
+    ║  Несанкціоноване копіювання, модифікація                  ║
+    ║  або розповсюдження заборонено.                           ║
+    ║                                                           ║
+    ║  Контакт: rebelthemachine@gmail.com                       ║
+    ╚═══════════════════════════════════════════════════════════╝
+*/
+
 /* app.js
    Головна логіка платформи: завантажує Pyodide, підключає tester.py, ініціалізує редактор,
    обробник запуску і перевірки, зберігає прогрес в localStorage, генерує PDF.
@@ -134,10 +146,10 @@ async function initPyodide() {
               await micropip.install("numpy") in Python, or
               await pyodide.loadPackage("numpy") in JavaScript
 
-        Необхідно у файлі pyodide-lock.json знайти основний модуль таким чином - "pandas":
+        Необхідно у файлі pyodide-lock.json знайти основний модуль таким чином - приклад "pandas":
             потім взяти його .whl (Wheel) - pandas-1.5.3-cp311-cp311-emscripten_3_1_45_wasm32.whl
             вставити це після https://cdn.jsdelivr.net/pyodide/v0.24.1/full/ в браузері і скачати бібліотеку
-            подивитись "depends": у файлі pyodide-lock.json і скачати .whl для кожної з бібліотек
+            подивитись "depends": у файлі pyodide-lock.json за пошуком "name": "pandas" і скачати .whl для кожної з бібліотек
                 подивитись по принципу "pandas": залежності кожної з підбібліотек і завантижити їх теж
 
             .tar (Tarball) не треба скачувати
@@ -149,16 +161,6 @@ async function initPyodide() {
         $('pyodideStatus').textContent = '(Pyodide: Loading pandas...)';
         await pyodide.loadPackage("pandas");
         /* --- */
-
-        /*
-        $('pyodideStatus').textContent = '(Pyodide: Loading scipy...)';
-        await pyodide.loadPackage("scipy");
-         --- */
-
-        /*
-        $('pyodideStatus').textContent = '(Pyodide: Loading matplotlib...)';
-        await pyodide.loadPackage("matplotlib");
-         --- */
 
         // Завантажуємо tester.py як модуль
         const response = await fetch('tester.py');
@@ -464,14 +466,6 @@ function loadTask(taskId) {
     
     editor.setValue(codeToLoad);
     editor.refresh();
-    
-    // Оновлюємо статус підказки - не прибирається підказка ніколи, можна використати для того щоб дізнатись чи була взяти підказка
-    // const hintUsed = USER_PROGRESS[taskId] && USER_PROGRESS[taskId].hintUsed;
-    // if (hintUsed) {
-    //     showHint(task.hint, true);
-    // } else {
-    //     $('hintBlock').classList.add('hidden');
-    // }
 
     $('hintBlock').classList.add('hidden');
 
@@ -480,14 +474,6 @@ function loadTask(taskId) {
     $('successMessage').classList.add('hidden');
 }
 
-// Стара функція для показування прогресу у відсотках
-//function renderProgress() {
-//    const totalTasks = TASKS.length;
-//    const doneTasks = Object.values(USER_PROGRESS).filter(p => p.done).length;
-//    const percentage = totalTasks > 0 ? Math.floor((doneTasks / totalTasks) * 100) : 0;
-//    
-//    $('progress').textContent = `${percentage}%`;
-//}
 
 // Функція renderProgress (camelCase) для консистентності. Для відображення прогресу у відсотках і к-ті
 function renderProgress() {
@@ -499,8 +485,8 @@ function renderProgress() {
     const doneTasks = Object.values(USER_PROGRESS).filter(p => p.done).length;
 
     // 3. Формування рядка у потрібному форматі та оновлення DOM
-    // Використовуйте 'Progress-status' для відповідності ID в HTML
-    // Використовуйте коректний синтаксис шаблонного рядка
+    // Використовуємо 'Progress-status' для відповідності ID в HTML
+    // Використовуємо коректний синтаксис шаблонного рядка
     $('Progress-status').textContent = `Прогрес: ${doneTasks} / ${totalTasks}`;
 
     //const totalTasks = TASKS.length;
@@ -623,7 +609,7 @@ function onSolution() {
             editor.setValue(task.solution);
             editor.refresh();
             saveCurrentCode();
-            $('output').textContent = 'Розв\'язок завантажено. Тепер спробуйте запустити та перевірити його.';
+            $('output').textContent = 'Розв\'язок завантажено. Тепер спробуємо запустити та перевірити його.';
         }
     }
 }
@@ -856,47 +842,6 @@ async function fetchData() {
     }
 }
 
-
-/* функція яка була до створення Додаткових матеріалів
-function initSidebarTabs() {
-    const sidebar = document.querySelector('.sidebar');
-    
-    const tabsHTML = `
-        <div class="sidebar-tabs">
-            <button class="tab-btn active" data-tab="lessons">📚 Навчання</button>
-            <button class="tab-btn" data-tab="practice">✍️ Практика</button>
-        </div>
-        <div class="tab-content" id="lessonsTab">
-            <div id="lessonsContent"></div>
-        </div>
-        <div class="tab-content hidden" id="practiceTab">
-            <div class="practice-view-toggle">
-                <button class="view-btn active" data-view="byLesson">За темами</button>
-                <button class="view-btn" data-view="all">Всі завдання</button>
-            </div>
-            <div id="lessonsList" class="lesson-list"></div>
-        </div>
-    `;
-    
-    sidebar.innerHTML = tabsHTML;
-    
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const tabName = e.target.dataset.tab;
-            switchTab(tabName);
-        });
-    });
-    
-    document.querySelectorAll('.view-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const viewMode = e.target.dataset.view;
-            setPracticeViewMode(viewMode);
-        });
-    });
-    
-    renderLessonsContent();
-    renderSidebar();
-}*/
 
 function initSidebarTabs() {
     const sidebar = document.querySelector('.sidebar');
