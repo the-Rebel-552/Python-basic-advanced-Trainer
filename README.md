@@ -75,4 +75,5 @@ Existing problems and shortcomings that will be solved in this version:
     — when clicking the run code button of this "Sandbox", the code will be read from the file
       to execute the program, in case of testing your code, if there is multiple data, then through a comma
   — Adaptation to the mobile version
+  
   — Check adaptations to different screen sizes
