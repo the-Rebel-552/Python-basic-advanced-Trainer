@@ -45,22 +45,25 @@ Existing problems and shortcomings that will be solved in this version:
   
   ✅ Sorted information materials
   
-  — Expand the OOP topic: Classes and Objects:
-    Class definition syntax
-    Inheritance, Polymorphism, Encapsulation
+  ✅ Expanded the OOP topic: Classes and Objects:
+  
+    class definition syntax
+    inheritance, Polymorphism, Encapsulation
     
-  — Add the following topics:
-    Set: types set, frozensent
-    Type NoneType
+  ✅ Added the following topics:
+  
+    set: types set, frozensent
+    type NoneType
     
-  — Add sections for additional material, syntaxes with examples:
-    Class definition syntax
-    Class as a template for objects
-    Inheritance
-    Polymorphism
-    Encapsulation
-    Set: types set, frozensent
-    Type NoneType
+  ✅ Added sections for additional material, syntaxes with examples:
+  
+    class definition syntax
+    class as a template for objects
+    inheritance
+    polymorphism
+    encapsulation
+    set: types set, frozensent
+    type NoneType
     
   -X- "Sandbox", for a full-fledged test with all functions (input-output, file operations
   
