@@ -797,7 +797,7 @@
       "lesson_id": "L11",
       "title": "Метод speak",
       "level": "medium",
-      "text": "У класі Dog (з T61) додайте метод speak, який виводить рядок 'Woof!'. Створіть об'єкт і викличте цей метод.",
+      "text": "У класі Dog (з T60) додайте метод speak, який виводить рядок 'Woof!'. Створіть об'єкт і викличте цей метод.",
       "starter": "#...to autocomplete command press ctrl+space...\nclass Dog:\n    def __init__(self, name):\n        self.name = name\n    # ...\n\nmy_dog = Dog('Buddy')\nmy_dog.speak()",
       "hint": "Метод екземпляра має приймати self як перший аргумент.",
       "solution": "class Dog:\n    def __init__(self, name):\n        self.name = name\n    def speak(self):\n        print('Woof!')\n\nmy_dog = Dog('Buddy')\nmy_dog.speak()",
@@ -1388,3 +1388,4 @@
     }
   ]
 }
+
