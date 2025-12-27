@@ -80,3 +80,12 @@ Existing problems and shortcomings that will be solved in this version:
   — Adaptation to the mobile version
   
   — Check adaptations to different screen sizes
+
+  -X- Add sections for additional material, syntaxes with examples:
+  
+    temporal or Dagster workflow orchestration
+    Python + Playwrite tests
+    playwrite and FastAPI
+    QA, Python relations
+    SQL and Python relations and also alternative options for interacting with SQL
+    list generator and string operations
